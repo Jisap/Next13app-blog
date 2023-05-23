@@ -1,6 +1,7 @@
 'use client'
 
 import Input from '@/components/input/Input'
+import { signIn } from 'next-auth/react'
 import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -30,21 +31,21 @@ const page = () => {
 
         event.preventDefault()
 
-        // signIn('credentials', {
-        //     ...state,
-        //     redirect: false,
-        // })
-        //     .then((callback) => {
+        signIn('credentials', {
+            ...state,
+            redirect: false,
+        })
+            .then((callback) => {
 
-        //         if (callback?.ok) {
-        //             router.refresh()
-        //         }
+                if (callback?.ok) {
+                    router.refresh()
+                }
 
-        //         if (callback?.error) {
-        //             throw new Error('Wrong Credentials')
-        //         }
-        //     })
-        // router.push('/')
+                if (callback?.error) {
+                    throw new Error('Wrong Credentials')
+                }
+            })
+        router.push('/')
     }
 
     return (
