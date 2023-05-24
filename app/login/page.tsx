@@ -31,7 +31,7 @@ const page = () => {
 
         event.preventDefault()
 
-        signIn('credentials', {
+        signIn('credentials', { // Método de next-Auth que busca las credenciales en [...nextauth]
             ...state,
             redirect: false,
         })
