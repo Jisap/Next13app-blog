@@ -50,7 +50,7 @@ export const authOptions:AuthOptions = {
 
     callbacks:{
         session: ({ session, token }) => {
-            console.log('Session Callback', { session, token })
+            //console.log('Session Callback', { session, token })
             return {
                 ...session,
                 user:{

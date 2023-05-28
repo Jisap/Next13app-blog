@@ -12,8 +12,8 @@ export const metadata = {
 
 export default async function RootLayout({children,}: {children: React.ReactNode}) {
   
-  const currentUser = await getCurrentUser()
- 
+  const currentUser = await getCurrentUser(); // Usuario logueado se pasa al navbar
+
   return (
     <html lang="en">
       <body className={inter.className}>

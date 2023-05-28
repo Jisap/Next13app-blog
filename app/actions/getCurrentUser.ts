@@ -8,13 +8,13 @@ export const getSession = async() => {
 
 export const getCurrentUser = async() => {
     try {
-        const session = await getSession();
+        const session = await getSession(); // La session contiene los datos de logueo name, email, image
 
         if (!session?.user?.email) {
             return null;
         }
 
-        const currentUser = await prisma.user.findUnique({
+        const currentUser = await prisma.user.findUnique({ // Buscamos un usuario en bd que coincida con el de la session(logueado)
             where: {
                 email: session.user.email as string,
             }
@@ -25,7 +25,7 @@ export const getCurrentUser = async() => {
         }
 
 
-        return {
+        return {                                                            // Le añadimos createdAt etc
             ...currentUser,
             createdAt: currentUser.createdAt.toISOString(),
             updatedAt: currentUser.updatedAt.toISOString(),
@@ -36,4 +36,4 @@ export const getCurrentUser = async() => {
     }
 }
 
-export default getCurrentUser;
+export default getCurrentUser; // getCurrentUser contiene el usuario de bd logueado mas las fechas de creación y actualización
